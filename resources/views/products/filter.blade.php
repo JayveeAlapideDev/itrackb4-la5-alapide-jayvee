@@ -7,25 +7,47 @@
     <h1>Products in my Store</h1>
     <p>Prepared by: Jayvee Espanola Alapide</p>
  
+    @if ($brand)
+       <p>Showing Brand: {{ $brand }}</p>
+    @else
+    <p>Showing all products</p>
+    @endif
+
+    <p>
+        <a href="{{ route('products.index') }}">All</a> |
+        <a href="{{ route('products.filter', 'sunsilk') }}">SUNSILK</a> |
+        <a href="{{ route('products.filter', 'choco') }}">CHOCO</a> |
+        <a href="{{ route('products.filter', 'dishwashing') }}">DISHWASHING</a> |
+        <a href="{{ route('products.filter', 'nescafe') }}">NESCAFE</a> |
+        <a href="{{ route('products.filter', 'mint') }}">MINT</a>
+    </p>
+
     <table border="1" cellpadding="8">
         <tr>
+            <th>No.</th>
             <th>Name</th>
             <th>Price</th>
             <th>Stock</th>
-            <th>Tag</th>
+            <th>Brand</th>
             <th>Available</th>
         </tr>
  
-        @foreach ($products as $product)
+        @forelse ($products as $product)
             <tr>
+
+                <td>{{ $loop->iteration }}</td>
+
                 <td><a href="/products/{{$product['id']}}"> {{ $product['name']}}</a></td>
                 <td>{{ $product['price'] }}</td>
                 <td>{{ $product['stock'] }}</td>
-                <td>{{ $product['tag'] }}</td>
+                <td>{{ $product['brand'] }}</td>
                 <td>{{ $product['is_available'] ? 'Yes' : 'No' }}</td>
                 
             </tr>
-        @endforeach
+            @empty
+            <tr><td colspan="6">No Brand Matched this filter: {{ $brand }}</td></tr>
+        @endforelse
+        
     </table>
 </body>
 </html>

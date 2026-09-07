@@ -1,10 +1,10 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>My Product List</title>
-</head>
-<body>
-    <h1>Products in my Store</h1>
+@extends('layouts.app')
+
+@section('title', 'All Products')
+@section('content')
+
+
+ <h3>Products in my Store</h3>
     <p>Prepared by: Jayvee Espanola Alapide</p>
  
     <table border="1" cellpadding="8">
@@ -12,7 +12,7 @@
             <th>Name</th>
             <th>Price</th>
             <th>Stock</th>
-            <th>Tag</th>
+            <th>Brand</th>
             <th>Available</th>
         </tr>
  
@@ -21,12 +21,13 @@
                 <td><a href="{{ route('products.show', $product['id'])}}"> {{ $product['name']}}</a></td>
                 <td>{{ $product['price'] }}</td>
                 <td>{{ $product['stock'] }}</td>
-                <td>{{ $product['tag'] }}</td>
+                <td>{{ $product['brand'] }}</td>
                 <td>{{ $product['is_available'] ? 'Yes' : 'No' }}</td>
                 
             </tr>
         @endforeach
     </table>
-</body>
-</html>
+
+@endsection
+
 
