@@ -7,7 +7,7 @@
  <h3>Products in my Store</h3>
     <p>Prepared by: Jayvee Espanola Alapide</p>
  
-    <table border="1" cellpadding="8">
+    <table class="table table-borderd table-striped" border="1" cellpadding="8">
         <tr>
             <th>Name</th>
             <th>Price</th>

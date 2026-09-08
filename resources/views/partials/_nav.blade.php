@@ -1,6 +1,6 @@
 
 
-<nav>
-    <a href="{{ route('products.index') }}"> All Products</a> |
-    <a href="{{ route('products.filter') }}"> Filter Products by Brand</a>
+<nav class="nav mb-3">
+    <a class="btn btn-outline-primary m-2" href="{{ route('products.index') }}">All Products</a>
+<a class="btn btn-outline-primary m-2" href="{{ route('products.filter') }}">Filter</a>
 </nav>
