@@ -6,12 +6,69 @@ use Illuminate\Http\Request;
 
 class ProductController extends Controller
 {
-    public function featured()
+   public function featured()
     {
         $products = $this->products();
         $featured = $products[4];
 
         return view('products.show', ['product'=> $featured]);
+    }
+    public function index()
+    {
+       return view('products.index', ['products'=> $this -> products()]);
+    }
+
+    /**
+     * Show the form for creating a new resource.
+     */
+    public function create()
+    {
+        //
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     */
+    public function store(Request $request)
+    {
+        //
+    }
+
+    /**
+     * Display the specified resource.
+     */
+    public function show(string $id)
+    {
+     $products = $this->products();
+
+        if(!isset($products[$id]))
+            {
+                abort(404);
+            }
+
+        return view('products.show', ['product' => $products[$id]]);
+    }
+
+    
+    public function edit(string $id)
+    {
+        //
+    }
+
+    /**
+     * Update the specified resource in storage.
+     */
+    public function update(Request $request, string $id)
+    {
+        //
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     */
+    public function destroy(string $id)
+    {
+        //
     }
 
     public function filter($brand = null)
@@ -31,22 +88,7 @@ class ProductController extends Controller
     }
     return view('products.filter', ['products' => $products, 'brand' => $brand,]);
     }
-    public function index()
-    {
-        return view('products.index', ['products'=> $this -> products()]);
-    }
-    public function show($id)
-    {
-        $products = $this->products();
 
-        if(!isset($products[$id]))
-            {
-                abort(404);
-            }
-
-        return view('products.show', ['product' => $products[$id]]);
-    }
-    
     private function products(){
         return [
             1 => ['id' => 1,'name'=> 'Shampoo', 'price' => 10, 'stock'=> 50, 'brand' => 'sunsilk', 'is_available' => true],
